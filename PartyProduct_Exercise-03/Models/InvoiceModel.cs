@@ -27,6 +27,7 @@ namespace PartyProduct_Exercise_03.Models
 
         [Display(Name = "Quantity")]
         [Required(ErrorMessage = "Please Enter Quantity")]
+        [Range(1, int.MaxValue, ErrorMessage = "Please Enter Valid Quantity")]
         public int Quantity { get; set; }
         public int Total { get; set; }
     }

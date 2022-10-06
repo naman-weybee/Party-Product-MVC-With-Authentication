@@ -94,6 +94,7 @@ namespace PartyProduct_Exercise_03.Controllers
         [HttpGet("EditProductRate/{id}/{productId}/{rate}")]
         public IActionResult ProductRateEdit(int productId, int rate, int isSuccess = 0, bool isDisabled = false)
         {
+            ViewBag.IsSuccess = isSuccess;
             ViewBag.IsDisabled = true;
             return View("ProductRateAdd");
         }
@@ -106,7 +107,7 @@ namespace PartyProduct_Exercise_03.Controllers
                 int x = await _productRateRepository.ProductRateEditById(id, productRateModel);
                 if (x == 0)
                 {
-                    return RedirectToAction(nameof(ProductRateAdd), new { isSuccess = 2, productRateId = productRateModel.Id });
+                    return RedirectToAction(nameof(ProductRateEdit), new { isSuccess = 2, productRateId = productRateModel.Id });
                 }
             }
             return RedirectToAction("ProductRate");

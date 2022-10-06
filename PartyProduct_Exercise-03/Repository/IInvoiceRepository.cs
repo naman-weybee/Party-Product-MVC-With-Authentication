@@ -12,6 +12,6 @@ namespace PartyProduct_Exercise_03.Repository
         Task<int> InvoiceAdd(InvoiceModel invoiceModel);
         Task<List<AssignPartyModel>> BindProduct(int PartyId);
         Task<int> BindRate(int ProductId);
-        Task ClrearInvoiceAsync();
+        Task ClrearInvoice();
     }
 }

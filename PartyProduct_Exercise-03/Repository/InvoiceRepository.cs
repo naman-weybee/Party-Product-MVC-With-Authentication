@@ -36,7 +36,7 @@ namespace PartyProduct_Exercise_03.Repository
         public async Task<int> InvoiceAdd(InvoiceModel invoiceModel)
         {
             var y = _context.Invoice
-                    .Where(x => x.PartyId == invoiceModel.PartyId).Where(x => x.ProductId == invoiceModel.ProductId).Where(x => x.CurrentRate == invoiceModel.CurrentRate).FirstOrDefault();
+                    .Where(x => x.PartyId == invoiceModel.PartyId && x.ProductId == invoiceModel.ProductId && x.CurrentRate == invoiceModel.CurrentRate).FirstOrDefault();
 
             if (y == null)
             {
@@ -86,7 +86,7 @@ namespace PartyProduct_Exercise_03.Repository
                 .Select(x => x.Rate).FirstOrDefaultAsync();
         }
 
-        public async Task ClrearInvoiceAsync()
+        public async Task ClrearInvoice()
         {
             foreach (var item in _context.Invoice)
             {

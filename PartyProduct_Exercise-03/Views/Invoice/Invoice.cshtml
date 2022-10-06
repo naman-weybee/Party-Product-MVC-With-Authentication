@@ -8,12 +8,12 @@
 <br />
 
 <div class="container">
-
     @if (ViewBag.IsSuccess == 1)
     {
-<div class="alert alert-success alert-dismissible fade text-center show col-sm-6" role="alert" style="margin:auto">
-    <strong>Invoice</strong> added successfully.
-</div><br />}
+        <div class="alert alert-success alert-dismissible fade text-center show col-sm-6" role="alert" style="margin:auto">
+            <strong>Invoice</strong> added successfully.
+        </div><br />
+    }
 
     <form method="post" enctype="multipart/form-data" asp-controller="Invoice" asp-action="Invoice">
         <div class="form-group row justify-content-center">
@@ -48,10 +48,10 @@
             <input type="submit" value="Add Invoice" class="btn btnSave" />
         </div><br />
 
-        @if (ViewBag.display && ViewBag.Invoice != null && ViewBag.Invoice is List<InvoiceModel>
-            )
-            {
-            <partial name="_invoiceAdd" model="(List<InvoiceModel>) ViewBag.Invoice" />}
+        @if (ViewBag.display && ViewBag.Invoice != null && ViewBag.Invoice is List<InvoiceModel>)
+        {
+            <partial name="_invoiceAdd" model="(List<InvoiceModel>) ViewBag.Invoice" />
+        }
 
     </form>
 </div>
@@ -118,38 +118,38 @@
                 });
             }
         });
-    });
-</script>
+    });</script>
 
 @if (ViewBag.display == true)
 {
-<script src="~/lib/jquery/jquery.js"></script>
-                <script src="~/lib/jquery/jquery.min.js"></script>
-                                <script>
-                                    $("#ddlParty").ready(function () {
-                                        var PartyId = parseInt($(this).val());
-                                        var PartyId = $('#ddlParty option:selected').val();
+    <script src="~/lib/jquery/jquery.js"></script>
+    <script src="~/lib/jquery/jquery.min.js"></script>
+    <script>
+        $("#ddlParty").ready(function () {
+            var PartyId = parseInt($(this).val());
+            var PartyId = $('#ddlParty option:selected').val();
 
-                                        if (!isNaN(PartyId)) {
-                                            var ddlProduct = $('#ddlProduct');
-                                            ddlProduct.empty();
-                                            //debugger
-                                            $.ajax({
-                                                url: 'https://localhost:44395/Invoice/BindProductDetails',
-                                                type: 'GET',
-                                                //dataType: 'json',
-                                                data: { PartyId: PartyId },
-                                                success: function (d) {
-                                                    ddlProduct.empty();
-                                                    ddlProduct.append($("<option></option>").val('').html('Choose Product'));
-                                                    $.each(d, function (i, product) {
-                                                        ddlProduct.append($("<option></option>").val(product.productId).html(product.productName))
-                                                    });
-                                                },
-                                                error: function () {
-                                                    alert('Error 500!');
-                                                }
-                                            });
-                                        }
-                                    });
-                                </script>}
+            if (!isNaN(PartyId)) {
+                var ddlProduct = $('#ddlProduct');
+                ddlProduct.empty();
+                //debugger
+                $.ajax({
+                    url: 'https://localhost:44395/Invoice/BindProductDetails',
+                    type: 'GET',
+                    //dataType: 'json',
+                    data: { PartyId: PartyId },
+                    success: function (d) {
+                        ddlProduct.empty();
+                        ddlProduct.append($("<option></option>").val('').html('Choose Product'));
+                        $.each(d, function (i, product) {
+                            ddlProduct.append($("<option></option>").val(product.productId).html(product.productName))
+                        });
+                    },
+                    error: function () {
+                        alert('Error 500!');
+                    }
+                });
+            }
+        });
+    </script>
+}

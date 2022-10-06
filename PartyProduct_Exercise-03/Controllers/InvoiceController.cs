@@ -77,7 +77,7 @@ namespace PartyProduct_Exercise_03.Controllers
 
         public async Task<IActionResult> ClrearInvoice()
         {
-            await _invoiceRepository.ClrearInvoiceAsync();
+            await _invoiceRepository.ClrearInvoice();
 
             return RedirectToAction(nameof(Invoice), new { isAdded = false });
         }

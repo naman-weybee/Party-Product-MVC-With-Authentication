@@ -7,11 +7,13 @@
     @if (ViewBag.productRateId == 0)
     {
         action = "ProductRateAdd";
-<h3 class="h3 font-weight-normal">Product Rate Add</h3> }
-            else
-            {
-                action = "ProductRateEdit";
-<h3 class="h3 font-weight-normal">Product Rate Update</h3>}
+        <h3 class="h3 font-weight-normal">Product Rate Add</h3>
+    }
+    else
+    {
+        action = "ProductRateEdit";
+        <h3 class="h3 font-weight-normal">Product Rate Update</h3>
+    }
 </div>
 <br />
 
@@ -19,15 +21,16 @@
 
     @if (ViewBag.IsSuccess == 1)
     {
-<div class="alert alert-success alert-dismissible fade show" role="alert">
-    <strong>Congratulations</strong> You added new Product <strong>@ViewBag.productName</strong> at Rate <strong>@ViewBag.productRate</strong> on <strong>@DateTime.Today.ToString("dd-MM-yyyy")</strong> successfully.
-</div> }
-            else if (ViewBag.IsSuccess == 2)
-            {
-<div class="alert alert-danger alert-dismissible fade show" role="alert">
-    Rate is already assigned for this <strong>Product</strong>
-    Please Choose different <strong>Product</strong>.
-</div>}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Congratulations</strong> You added new Product <strong>@ViewBag.productName</strong> at Rate <strong>@ViewBag.productRate</strong> on <strong>@DateTime.Today.ToString("dd-MM-yyyy")</strong> successfully.
+        </div>
+    }
+    else if (ViewBag.IsSuccess == 2)
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            Please Choose different Rate for this <strong>Product</strong>.
+        </div>
+    }
 
     <form method="post" enctype="multipart/form-data" asp-controller="ProductRate" asp-action="@action">
         <div class="form-group row justify-content-center">
@@ -53,10 +56,12 @@
         <div class="form-group text-center">
             @if (ViewBag.productRateId == 0)
             {
-<input type="submit" value="Save" class="btn btnSave" /> }
+                <input type="submit" value="Save" class="btn btnSave" />
+            }
             else
             {
-<input type="submit" value="Update" class="btn btnSave" />            }
+            <input type="submit" value="Update" class="btn btnSave" />
+            }
             <a asp-controller="ProductRate" asp-action="ProductRate" class="btn btnCancel">Cancel</a>
         </div>
     </form>
